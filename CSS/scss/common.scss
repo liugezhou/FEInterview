@@ -1,0 +1,65 @@
+// 项目主颜色
+$themeColor1:#FD6F24; 
+$themeColor2:#F0412F; 
+
+/*弹性盒子（传入null不设置该属性）*/
+@mixin flex($direction: row, $justify: null, $align: null, $flex-wrap: null) {
+  display: flex;
+  @if ($direction!=null) {
+      flex-direction: $direction;
+  }
+  @if ($justify!=null) {
+      justify-content: $justify;
+  }
+  @if ($align!=null) {
+      align-items: $align;
+  }
+  @if ($flex-wrap != null) {
+      flex-wrap: $flex-wrap;
+  }
+}
+// 文字溢出隐藏显示...
+@mixin text-overflow($line: 1) {
+  @if $line==1 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  } @else {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+  }
+}
+// 垂直居中
+@mixin s_middle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%); /* IE 9 */
+  -moz-transform: translateY(-50%); /* Firefox */
+  -webkit-transform: translateY(-50%); /* Safari 和 Chrome */
+  -o-transform: translateY(-50%);
+}
+// 边框颜色
+@mixin bd($color){
+  border:1px solid $color;
+}
+
+// 颜色渐变-左到右
+@mixin gradient_LToR($leftColor, $rightColor){
+  background: -webkit-linear-gradient(left, $leftColor , $rightColor); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, $leftColor, $rightColor); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, $leftColor, $rightColor); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, $leftColor , $rightColor); /* 标准的语法 */
+}
+
+// 颜色渐变-上到下
+@mixin gradient_two($topColor, $bottomColor){
+  background: -webkit-linear-gradient($topColor, $bottomColor); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient($topColor, $bottomColor); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient($topColor, $bottomColor); /* Firefox 3.6 - 15 */
+  background: linear-gradient($topColor, $bottomColor); /* 标准的语法 */
+}
